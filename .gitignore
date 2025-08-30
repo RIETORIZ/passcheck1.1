@@ -1,0 +1,16 @@
+# Python
+.venv/
+__pycache__/
+*.pyc
+
+# Node / Vite
+ui/node_modules/
+ui/dist/
+
+# Env
+*.env
+
+# Archives
+*.zip
+*.tar
+*.gz
