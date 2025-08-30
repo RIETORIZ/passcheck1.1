@@ -1,20 +1,142 @@
-/* Icons & unified list (updated) */
-.list { list-style: none; padding-left: 0; margin: 0; }
-.item { display: flex; gap: 10px; align-items: flex-start; margin: 6px 0; }
-.icon {
-  width: 22px; height: 22px; display: inline-flex; align-items: center; justify-content: center;
-  border-radius: 50%; font-weight: 800; line-height: 1; user-select: none;
+/* ==== Base Theme (Dark) =================================================== */
+:root{
+  --bg: #0b1220;
+  --bg-soft: #0e1626;
+  --panel: #0f1a2b;
+  --text: #e6eefc;
+  --text-dim: #b7c2d9;
+  --border: rgba(255,255,255,0.08);
+  --border-strong: rgba(255,255,255,0.14);
+  --ring: rgba(88,166,255,0.35);
+}
+
+* { box-sizing: border-box; }
+html, body, #root { height: 100%; }
+body{
+  margin:0;
+  color:var(--text);
+  background: radial-gradient(1200px 600px at 50% -10%, #12213a 0%, var(--bg) 60%);
+  font: 500 16px/1.5 system-ui, -apple-system, Segoe UI, Roboto, Inter, "Noto Sans", Arial, "Apple Color Emoji","Segoe UI Emoji";
+}
+#root{ padding: 32px 16px; }
+.app,.shell,.container,main{ max-width: 1100px; margin: 0 auto; }
+
+h1,h2,h3,h4{ margin: 0 0 10px 0; line-height:1.2; }
+h1{ font-size: 32px; letter-spacing:.3px; }
+h2{ font-size: 24px; }
+h3{ font-size: 18px; }
+h4{ font-size: 15px; color: var(--text-dim); }
+
+.muted{ color: var(--text-dim); }
+.small{ font-size: 13px; }
+
+/* ==== Cards & Layout ====================================================== */
+.card{
+  background: var(--bg-soft);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 16px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+  margin: 16px 0;
+}
+.card.subtle{
+  background: transparent;
+  border-color: var(--border);
+}
+.row{ display:flex; align-items:center; gap:10px; }
+.row.between{ justify-content: space-between; }
+.row.center{ align-items:center; }
+
+.split{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+@media (max-width: 860px){
+  .split{ grid-template-columns: 1fr; }
+}
+
+.form-grid{
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px 16px;
+  margin: 14px 0 6px;
+}
+.form-grid .row{ grid-column: 1 / -1; }
+@media (max-width: 700px){
+  .form-grid{ grid-template-columns: 1fr; }
+}
+
+/* ==== Inputs & Buttons ==================================================== */
+label{ display:flex; flex-direction:column; gap:6px; font-weight:600; color:var(--text); }
+input,select,textarea{
+  width:100%;
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: #0a1424;
+  color: var(--text);
+  outline: none;
+}
+input:focus,select:focus,textarea:focus{ border-color: var(--ring); box-shadow: 0 0 0 3px rgba(88,166,255,0.12); }
+
+.btn{
+  border:1px solid var(--border);
+  background: #0f1a2b;
+  color:var(--text);
+  border-radius: 12px;
+  padding: 8px 14px;
+  cursor:pointer;
+}
+.btn:hover{ border-color: var(--border-strong); }
+.btn.primary{
+  background: linear-gradient(180deg,#4f83ff 0%, #2b5cff 100%);
+  border-color: transparent;
+}
+
+/* ==== Lists & Icons ======================================================= */
+.list{ list-style:none; padding-left:0; margin:0; }
+.item{ display:flex; gap:10px; align-items:flex-start; margin:6px 0; }
+.icon{
+  width:22px; height:22px;
+  display:inline-flex; align-items:center; justify-content:center;
+  border-radius:50%; font-weight:800; line-height:1; user-select:none;
   border: 1px solid transparent;
 }
-.icon.good { background: rgba(47,191,113,.15); color: #2fbf71; border-color: rgba(47,191,113,.35); }
-.icon.bad  { background: rgba(255,92,124,.12); color: #ff5c7c; border-color: rgba(255,92,124,.35); }
-.icon.warn { background: rgba(255,176,31,.12); color: #ffb01f; border-color: rgba(255,176,31,.35); }
+.icon.good{ background: rgba(47,191,113,.15); color:#2fbf71; border-color: rgba(47,191,113,.35); }
+.icon.bad { background: rgba(255,92,124,.12); color:#ff5c7c; border-color: rgba(255,92,124,.35); }
+.icon.warn{ background: rgba(255,176,31,.12); color:#ffb01f; border-color: rgba(255,176,31,.35); }
 
-/* Badges for score/similarity */
-.badge {
-  padding: 6px 10px; border-radius: 10px; border: 1px solid var(--border);
-  background: #0e1626; font-weight: 700;
+/* ==== Badges ============================================================== */
+.badge{
+  padding:6px 10px;
+  border-radius:10px;
+  border:1px solid var(--border);
+  background:#0e1626;
+  font-weight:700;
 }
-.badge.good { border-color: rgba(47,191,113,.35); }
-.badge.warn { border-color: rgba(255,176,31,.35); }
-.badge.bad  { border-color: rgba(255,92,124,.35); }
+.badge.good{ border-color: rgba(47,191,113,.35); }
+.badge.warn{ border-color: rgba(255,176,31,.35); }
+.badge.bad { border-color: rgba(255,92,124,.35); }
+
+/* ==== Code Blocks ========================================================= */
+.pre{
+  background:#0e1626;
+  color:#e6eefc;
+  padding:10px;
+  border-radius:10px;
+  border:1px solid var(--border);
+  overflow:auto;
+}
+
+/* ==== Details/summary ===================================================== */
+details.card summary{
+  list-style:none;
+}
+details.card summary::-webkit-details-marker{ display:none; }
+details.card[open]{ border-color: var(--border-strong); }
+
+/* ==== Utility ============================================================= */
+.span-2{ grid-column: 1 / -1; }
+#analysis h3{ margin-bottom: 6px; }
+#reviewCard p{ margin: 6px 0 0 0; }
