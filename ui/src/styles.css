@@ -1,0 +1,20 @@
+/* Icons & unified list (updated) */
+.list { list-style: none; padding-left: 0; margin: 0; }
+.item { display: flex; gap: 10px; align-items: flex-start; margin: 6px 0; }
+.icon {
+  width: 22px; height: 22px; display: inline-flex; align-items: center; justify-content: center;
+  border-radius: 50%; font-weight: 800; line-height: 1; user-select: none;
+  border: 1px solid transparent;
+}
+.icon.good { background: rgba(47,191,113,.15); color: #2fbf71; border-color: rgba(47,191,113,.35); }
+.icon.bad  { background: rgba(255,92,124,.12); color: #ff5c7c; border-color: rgba(255,92,124,.35); }
+.icon.warn { background: rgba(255,176,31,.12); color: #ffb01f; border-color: rgba(255,176,31,.35); }
+
+/* Badges for score/similarity */
+.badge {
+  padding: 6px 10px; border-radius: 10px; border: 1px solid var(--border);
+  background: #0e1626; font-weight: 700;
+}
+.badge.good { border-color: rgba(47,191,113,.35); }
+.badge.warn { border-color: rgba(255,176,31,.35); }
+.badge.bad  { border-color: rgba(255,92,124,.35); }
